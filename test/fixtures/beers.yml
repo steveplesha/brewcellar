@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  brewery: MyString
+  brewyear: 1
+  size: MyString
+  quantity: 1
+
+two:
+  name: MyString
+  brewery: MyString
+  brewyear: 1
+  size: MyString
+  quantity: 1
