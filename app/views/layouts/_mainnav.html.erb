@@ -1,0 +1,16 @@
+<nav id="main-nav" class='main-nav'>
+    <ul>
+        <% if current_user %>
+            <li><%= link_to 'Add', new_beer_path, class: 'btnAdd menu-btn' %></li>
+            <li><%= link_to 'Cellar', beers_path, class: 'btnIndex menu-btn' %></li>
+            <li><%= link_to 'Delete', deletebeer_path, class: 'btnDelete menu-btn'%> </li>
+        <% end %>
+        <li>        
+            <% if !current_user %>
+                <%= link_to 'Sign In', new_user_session_path %>
+            <% else %>
+                <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: 'btnLogout menu-btn' %>
+            <% end %>
+        </li>
+    </ul>
+</nav>

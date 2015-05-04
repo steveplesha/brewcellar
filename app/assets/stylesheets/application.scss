@@ -14,48 +14,100 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+$btnAddColor: rgb(81, 186, 81);
+$btnIndexColor: rgb(69, 146, 250);
+$btnDeleteColor: rgb(255, 99, 99);
+$btnLogoutColor: rgb(177, 46, 177);
+
 html,
 body, main { height: 100%; }
 
+body { color: rgb(0, 0, 0); }
+
 footer,
-main { 
-    padding: 1rem;
-}
+main { padding: 0 1rem; }
 
 header {
-    padding: 1rem 1rem 2rem 1rem;
+    padding: 1rem 1rem 0 1rem;
+    margin-bottom: -45px;
 }
 
 main {
     background-image: url('background.jpg');
+    background-attachment: fixed;
+}
+
+ul {
+    -webkit-margin-before: 0;
+    -webkit-padding-start: 0;
 }
 
 .logo {
     height: 115px;
     float: left;
-    margin-right: 25px;
-}
-    
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.main-nav {
-    float: left;
-    margin-top: 32px;
-    ul {
-        list-style-type: none;
-        li {
-            display: inline-block;
-            margin-right: 15px;
-        }
-    }   
+    margin-right: 7px;
 }
 
 .brand { 
     float: left;
-    margin-right: 15px;
+}
+    
+.container {
+    background-color: rgba(255, 255, 255, .3);
 }
 
-.container { background-color: rgba(255, 255, 255, .3); }
+.menu-btn {
+    display: inline-block;
+    padding: 10px 0;
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    text-align: center;
+    &:hover { 
+        color: rgb(255, 255, 255); 
+    }
+}
+
+.btnAdd { 
+    background-color: $btnAddColor;
+    &:hover { background-color: darken($btnAddColor, 10%); }
+}
+
+.btnIndex { 
+    background-color: $btnIndexColor;
+    &:hover { background-color: darken($btnIndexColor, 10%); }
+}
+
+.btnDelete { 
+    background-color: $btnDeleteColor;
+    &:hover { background-color: darken($btnDeleteColor, 10%); }
+}
+
+.btnLogout {
+    background-color: $btnLogoutColor;
+    &:hover { background-color: darken($btnLogoutColor, 10%); }
+}
+    
+
+.main-nav {
+    ul {
+        list-style-type: none;
+        li {
+            display: inline-block;
+            margin-right: 1%;
+            width: 23%;
+        }
+    }   
+}
+
+.main-nav.fixed {
+    position: fixed;
+    top: 2px;
+    width: 98%;
+}
+
+@media screen and (min-width: 768px) {
+    .container { 
+        width: 80%;
+        margin: 0 auto;    }
+}

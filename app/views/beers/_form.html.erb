@@ -11,27 +11,47 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <%= f.label :name %><br>
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>   
+        </div> 
   </div>
-  <div class="field">
-    <%= f.label :brewery %><br>
-    <%= f.text_field :brewery %>
+  <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <%= f.label :brewery %><br>
+                <%= f.text_field :brewery, class: 'form-control' %>
+            </div>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :brewyear %><br>
-    <%= f.number_field :brewyear %>
+  <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <%= f.label :brewyear %><br>
+                <%= f.number_field :brewyear, class: 'form-control' %>
+            </div>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :size %><br>
-    <%= f.text_field :size %>
+  <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <%= f.label :size %><br>
+                <%= f.text_field :size, class: 'form-control' %>
+            </div>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.number_field :quantity %>
+  <div class="form-group">
+        <div class="row">
+            <div class="col-xs-12 col-md-4">
+                <%= f.label :quantity %><br>
+                <%= f.number_field :quantity, class: 'form-control' %>
+            </div>
+      </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update", class: 'btn' %>
   </div>
 <% end %>

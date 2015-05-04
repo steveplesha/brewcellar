@@ -9,6 +9,11 @@ class BeersController < ApplicationController
       respond_with(@beers)
     end
   end
+    
+  def deleteindex
+      @beers = Beer.where("user_id = ?", current_user.id).all
+      respond_with(@beers)
+  end
 
   def show
     respond_with(@beer)
