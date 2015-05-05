@@ -17,10 +17,14 @@
 $btnAddColor: rgb(81, 186, 81);
 $btnIndexColor: rgb(69, 146, 250);
 $btnDeleteColor: rgb(255, 99, 99);
+$btnLoginColor: rgb(41, 124, 206);
 $btnLogoutColor: rgb(177, 46, 177);
+$beerItemBackground: rgba(255,255,255,.6);
+$deleteBeerItemBackground: rgba(249, 0, 0, 0.5);
+$fontColor: rgb(255, 255, 255);
 
 html,
-body, main { height: 100%; }
+body { height: 100%; }
 
 body { color: rgb(0, 0, 0); }
 
@@ -35,12 +39,15 @@ header {
 main {
     background-image: url('background.jpg');
     background-attachment: fixed;
+    padding-bottom: 4rem;
 }
 
 ul {
     -webkit-margin-before: 0;
     -webkit-padding-start: 0;
 }
+
+li { list-style-type: none; }
 
 .logo {
     height: 115px;
@@ -51,21 +58,16 @@ ul {
 .brand { 
     float: left;
 }
-    
-.container {
-    background-color: rgba(255, 255, 255, .3);
-}
 
 .menu-btn {
     display: inline-block;
-    padding: 10px 0;
+    padding: 15px 0;
     border-radius: 4px;
-    color: rgb(255, 255, 255);
+    color: $fontColor;
     width: 100%;
     text-align: center;
-    &:hover { 
-        color: rgb(255, 255, 255); 
-    }
+    font-weight: bold;
+    &:hover { color: $fontColor; }
 }
 
 .btnAdd { 
@@ -83,6 +85,12 @@ ul {
     &:hover { background-color: darken($btnDeleteColor, 10%); }
 }
 
+.btnLogin {
+    background-color: $btnLoginColor;
+    width: 100%;
+    &:hover { background-color: darken($btnLoginColor, 10%); }
+}
+
 .btnLogout {
     background-color: $btnLogoutColor;
     &:hover { background-color: darken($btnLogoutColor, 10%); }
@@ -97,14 +105,49 @@ ul {
             margin-right: 1%;
             width: 23%;
         }
-    }   
+        li.loggedOut {
+            margin-left: 16%;
+            width: 26%;
+        }
+    }
 }
 
-.main-nav.fixed {
-    position: fixed;
-    top: 2px;
-    width: 98%;
+.container {
+    color: $fontColor
+    a { 
+        color: $fontColor; 
+        margin-top: 10px;
+    }
 }
+
+.page-title {
+    color: $fontColor;
+    text-align: center;
+}
+
+.beer-item,
+.delete-beer-item {
+    padding: 15px 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.beer-item { background-color: $beerItemBackground; 
+    ul li:last-child { margin-top: 10px; }
+}
+
+.delete-beer-item { 
+    background-color: $deleteBeerItemBackground;
+    color: $fontColor;
+    &:hover { 
+        background-color: opacify($deleteBeerItemBackground, .4); 
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
 
 @media screen and (min-width: 768px) {
     .container { 

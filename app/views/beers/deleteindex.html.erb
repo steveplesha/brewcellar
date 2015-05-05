@@ -1,21 +1,11 @@
-<h1>Delete a beer</h1>
+<h1 class='page-title'>Delete a beer</h1>
 
 <% if user_signed_in? %>
     <% @beers.each do |beer| %>
-        <div class='beer-item'>
-            <h3><%= "#{beer.brewery} #{beer.name}"%></h3>
-            <ul>
-                <li><%= "#{beer.size} oz." %></li>
-                <li><%= "#{beer.quantity} left" %></li>
-                <li><%= "Brewed in #{beer.brewyear}" %></li>
-                <li><%= "Added #{beer.created_at.to_formatted_s(:long)}" %></li>
-            </ul>
-        </div>
+        <%= link_to @beer, method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <div class='delete-beer-item'>
+                <h3><%= "#{beer.brewery} #{beer.name}"%></h3>
+            </div>
+        <% end %>
     <% end %>
-<% end %>
-<br>
-<% if user_signed_in? %>
-    <%= link_to 'New Beer', new_beer_path %>
-    <br>
-    <%= link_to 'Signout', destroy_user_session_path, :method => :delete %>
 <% end %>

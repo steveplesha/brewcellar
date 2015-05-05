@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'deletebeer' => 'beers#deleteindex'
+  get 'takeonedown' => 'beers#destroy'
   root 'beers#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
