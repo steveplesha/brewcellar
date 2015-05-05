@@ -39,3 +39,5 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.4'
+gem 'rails_12factor', group: :production
+gem 'rails_serve_static_assets'
