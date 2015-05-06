@@ -5,13 +5,14 @@ class BeersController < ApplicationController
 
   def index
     if current_user
-      @beers = Beer.where("user_id = ?", current_user.id).all
+      @beers = Beer.where("user_id = ?", current_user.id).all.order(:brewery, :name)
       respond_with(@beers)
     end
   end
     
   def deleteindex
-      @beers = Beer.where("user_id = ?", current_user.id).all
+      @beers = Beer.where("user_id = ?", current_user.id).all.order(:brewery, :name)
+      @beers = @beers.contains(params[:contains]) if params[:contains].present?
       respond_with(@beers)
   end
 
@@ -31,7 +32,7 @@ class BeersController < ApplicationController
     @beer = Beer.new(beer_params)
     @beer.user_id = current_user.id
     @beer.save
-    respond_with(@beer)
+    redirect_to beers_path
   end
 
   def update

@@ -2,7 +2,7 @@
 
 <% if user_signed_in? %>
     <% @beers.each do |beer| %>
-        <%= link_to @beer, method: :delete, data: {confirm: 'Are you sure?'} do %>
+        <%= link_to beer, method: :delete, data: {confirm: 'Are you sure?'}, class: 'no-underline' do %>
             <div class='delete-beer-item'>
                 <h3><%= "#{beer.brewery} #{beer.name}"%></h3>
             </div>

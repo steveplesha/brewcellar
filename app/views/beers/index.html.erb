@@ -1,9 +1,8 @@
-<h1 class='page-title'>Your Cellar</h1>
-
 <% if user_signed_in? %>
+    <h1 class='page-title'>Your Cellar</h1>
     <% @beers.each do |beer| %>
         <div class='beer-item'>
-            <h3><%= "#{beer.brewery} #{beer.name}"%></h3>
+            <h3><%= beer.brewery.capitalize + ' ' + beer.name.titleize %></h3>
             <ul>
                 <li><%= "Size: #{beer.size} oz." %></li>
                 <li><%= "#{beer.quantity} left" %></li>
@@ -13,5 +12,7 @@
             </ul>
         </div>
     <% end %>
+<% else %>
+    <p class="page-title">Log in to see your cellar!</p>
 <% end %>
 <br>
