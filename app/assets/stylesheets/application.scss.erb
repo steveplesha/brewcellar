@@ -137,6 +137,9 @@ li { list-style-type: none; }
     font-size: 7rem;
     text-align: center;
     font-family: 'Amatic SC', sans-serif;
+    background-image: url("chalkboard.png");
+    width: 75%;
+    margin: 10px auto 30px auto;
 }
 
 .beer-item,
@@ -198,19 +201,26 @@ input[type='submit'] {
     .container { 
         width: 80%;
         margin: 0 auto;    
+        padding: 1.5rem;
     }
+    
+    .page-title { width: 60%; }
     
     .beer-item,
     .delete-beer-item {
-        width: 60%;
+        width: 50%;
         margin: 0 auto 10px auto;
+    }
+    
+    .form-bkg { 
+        width: 80%;
+        margin: 0 auto;
     }
 }
 
 @media screen and (min-width: 950px) {
     .container { width: 70%; }
     
-    .form-bkg { 
-        width: 50%;
-    }
+    .form-bkg { width: 55%; }
+    
 }
