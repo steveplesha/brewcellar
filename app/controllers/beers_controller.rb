@@ -37,12 +37,17 @@ class BeersController < ApplicationController
 
   def update
     @beer.update(beer_params)
-    respond_with(@beer)
+    redirect_to beers_path
   end
 
   def destroy
     @beer.destroy
     respond_with(@beer)
+  end
+    
+  def import
+    Beer.import(params[:file])
+	redirect_to beers_path, notice: "Import submitted"
   end
 
   private

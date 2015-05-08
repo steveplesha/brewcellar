@@ -137,7 +137,8 @@ li { list-style-type: none; }
     font-size: 7rem;
     text-align: center;
     font-family: 'Amatic SC', sans-serif;
-    background-image: url("chalkboard.png");
+    background-image: url('<%= asset_path("chalkboard.png") %>');
+    border-radius: 4px;
     width: 75%;
     margin: 10px auto 30px auto;
 }
@@ -208,7 +209,7 @@ input[type='submit'] {
     
     .beer-item,
     .delete-beer-item {
-        width: 50%;
+        width: 75%;
         margin: 0 auto 10px auto;
     }
     
