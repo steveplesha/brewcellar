@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'deletebeer' => 'beers#deleteindex'
-  get 'takeonedown' => 'beers#destroy'
+  get 'takeonedown/:id' => 'beers#take_one_down', as: 'takeonedown'
   root 'beers#index'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

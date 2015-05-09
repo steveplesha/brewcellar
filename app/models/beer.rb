@@ -1,7 +1,10 @@
 class Beer < ActiveRecord::Base
     belongs_to :user
     
-    scope :contains, ->(name) { where("name like ?", "#{name}%")}
+    def self.search(query)
+        query = query.downcase
+        where("lower(name) like :q or lower(brewery) like :q or lower(beertype) like :q", q: "%#{query}%")
+    end    
     
     def self.import(file)
         spreadsheet = open_spreadsheet(file)

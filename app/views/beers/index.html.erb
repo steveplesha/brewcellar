@@ -1,15 +1,24 @@
 <% if user_signed_in? %>
     <h1 class='page-title'>Your Cellar</h1>
+    <%= form_tag beers_path, :method => 'get' do %>
+        <p class="search">
+            <%= text_field_tag :search, params[:search], placeholder: "Search brewery, beer name, or type" %>
+            <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
+        </p>
+    <% end %>
     <% @beers.each do |beer| %>
         <div class='beer-item'>
             <h3><%= beer.brewery.titleize + ' ' + beer.name.titleize %></h3>
-            <ul>
+            <a data-toggle="collapse" href="#collapse<%= beer.id %>">Click For Details</a><br>
+            <ul id="collapse<%= beer.id %>" class="collapse">
+                <li><%= beer.beertype.titleize %></li>
                 <li><%= "Size: #{beer.size} oz." %></li>
-                <li><%= "#{beer.quantity} left" %></li>
                 <li><%= "Brewed in #{beer.brewyear}" %></li>
                 <li>Added <%= l beer.created_at, format: :long %></li>
+                <li><%= "#{beer.quantity} left" %></li>
                 <li><%= link_to 'Edit', edit_beer_path(beer) %></li>
             </ul>
+            <%= link_to 'Take One Down', takeonedown_path(beer), class: 'btn btn-danger btnDown' %>
         </div>
     <% end %>
 <% else %>
