@@ -18,7 +18,7 @@
                 <li><%= "#{beer.quantity} left" %></li>
                 <li><%= link_to 'Edit', edit_beer_path(beer) %></li>
             </ul>
-            <%= link_to 'Take One Down', takeonedown_path(beer), class: 'btn btn-danger btnDown' %>
+            <%= link_to 'Take One Down', takeonedown_path(beer), data: {confirm: 'Subtract one of this beer from your inventory?'}, class: 'btn btn-danger btnDown' %>
         </div>
     <% end %>
 <% else %>
