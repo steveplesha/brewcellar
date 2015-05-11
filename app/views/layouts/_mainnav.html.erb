@@ -7,7 +7,7 @@
             <li><%= link_to "Logout", destroy_user_session_path, :method => :delete, class: 'btnLogout menu-btn' %> </li>
         <% else %>
             <li class='loggedOut'><%= link_to 'Sign In', new_user_session_path, class: 'btnLogin menu-btn' %>
-            <li class='loggedOut'><%= link_to 'Register', new_user_registration_path, class: 'btnLogin menu-btn' %>
+            <li class='loggedOut'><%= link_to 'Sign Up', new_user_registration_path, class: 'btnLogin menu-btn' %>
         <% end %>
         </li>
     </ul>

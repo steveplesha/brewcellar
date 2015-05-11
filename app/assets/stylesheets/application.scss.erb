@@ -132,17 +132,21 @@ li { list-style-type: none; }
 }
 
 
-
+.intro,
 .page-title {
     color: $mainFontColor;
-    font-weight: bold;
+    text-transform: capitalize;
     font-size: 7rem;
     text-align: center;
     font-family: 'Amatic SC', sans-serif;
     background-image: url('<%= asset_path("chalkboard.png") %>');
     border-radius: 4px;
-    width: 75%;
     margin: 10px auto 15px auto;
+}
+
+.page-title {
+    font-weight: bold;
+    width: 75%;
 }
 
 .search {
