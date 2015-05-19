@@ -1,0 +1,12 @@
+172.18.1.40 - good, no errors since november
+
+172.18.1.41 - main closet
+excessive crc errors - c23
+excessive broadcast - c23, d23, d11, b12 pop up a few times
+
+172.18.1.42 - cafe
+excessive broadcast on b5, b11
+
+172.18.1.44 - gym
+excessive alignment and broadcasts on e10, c22, c23
+

@@ -5,10 +5,14 @@ class BeersController < ApplicationController
 
   def index
     if current_user
+      @breweries = Beer.select(:brewery).distinct.where('user_id = ?', current_user.id).order(:brewery)
       if params[:search]
         @beers = Beer.search(params[:search])
         @beers = @beers.where("user_id = ?", current_user.id).order(:brewery, :name)
-      else 
+      elsif params[:filter]
+          @beers = Beer.search(params[:filter])
+          @beers = @beers.where("user_id = ?", current_user.id).order(:brewery, :name)
+      else
         @beers = Beer.where("user_id = ?", current_user.id).all.order(:brewery, :name)
       end
     respond_with(@beers)
@@ -36,6 +40,8 @@ class BeersController < ApplicationController
   def create
     @beer = Beer.new(beer_params)
     @beer.user_id = current_user.id
+    @beer.brewery = @beer.brewery.titleize
+    @beer.name = @beer.name.titleize
     @beer.save
     redirect_to beers_path
   end
@@ -71,6 +77,6 @@ class BeersController < ApplicationController
     end
 
     def beer_params
-      params.require(:beer).permit(:user_id, :name, :brewery, :brewyear, :size, :quantity, :beertype)
+      params.require(:beer).permit(:user_id, :name, :brewery, :enjoydate, :expirationdate, :size, :quantity, :beertype)
     end
 end

@@ -6,20 +6,33 @@
             <%= submit_tag "Search", :name => nil, class: "btn btn-primary" %>
         </p>
     <% end %>
-    <% @beers.each do |beer| %>
-        <div class='beer-item'>
-            <h3><%= beer.brewery.titleize + ' ' + beer.name.titleize %></h3>
-            <a data-toggle="collapse" href="#collapse<%= beer.id %>">Click For Details</a><br>
-            <ul id="collapse<%= beer.id %>" class="collapse">
-                <li><%= beer.beertype %></li>
-                <li><%= "Size: #{beer.size} oz." %></li>
-                <li><%= "Brewed in #{beer.brewyear}" %></li>
-                <li>Added <%= l beer.created_at, format: :long %></li>
-                <li><%= "#{beer.quantity} left" %></li>
-                <li><%= link_to 'Edit', edit_beer_path(beer) %></li>
-            </ul>
-            <%= link_to 'Take One Down', takeonedown_path(beer), data: {confirm: 'Subtract one of this beer from your inventory?'}, class: 'btn btn-danger btnDown' %>
-        </div>
+            
+    <%= form_tag beers_path, :method => 'get' do %>        
+        <p class="filter">
+           <%= collection_select :beer, 'filter', @breweries, :brewery, :brewery, {prompt: "Filter by brewery"}, {:name => 'filter'} %>
+        <%= link_to 'Clear Filter', root_path, class: 'clear-filter' %>
+        </p>
+    <% end %>
+   
+    <% if @beers.empty? %>
+        <h2 class="page-title">You don't have any beers yet,<br><%= link_to 'add some now!', new_beer_path %></h2>
+    <% else %>
+        <% @beers.each do |beer| %>
+            <div class='beer-item'>
+                <h3><%= beer.brewery.titleize + ' ' + beer.name.titleize %></h3>
+                <a data-toggle="collapse" href="#collapse<%= beer.id %>">Click For Details</a><br>
+                <ul id="collapse<%= beer.id %>" class="collapse">
+                    <li><%= beer.beertype %></li>
+                    <li><b><%= "#{beer.quantity} left" %></b></li>
+                    <li><%= "Size: #{beer.size} oz." %></li>
+                    <li><%= "Enjoy after #{beer.enjoydate}" %></li>
+                    <li><%= "Expires #{beer.expirationdate}" %></li>
+                    <li>Added <%= l beer.created_at, format: :long %></li>
+                    <li><%= link_to 'Edit', edit_beer_path(beer) %></li>
+                </ul>
+                <%= link_to 'Take One Down', takeonedown_path(beer), data: {confirm: 'Subtract one of this beer from your inventory?'}, class: 'btn btn-danger btnDown' %>
+            </div>
+        <% end %>
     <% end %>
 <% else %>
     <p class="intro">Have a large collection of craft beer in your cellar?<br>Keep track of your inventory here!</p>
